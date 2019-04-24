@@ -13,6 +13,7 @@ class App extends React.Component {
 constructor (){
   super();
   this.state = {
+    todosOnState: Todo,
     todos : [
       {
         task: 'Organize Garage',
@@ -23,11 +24,29 @@ constructor (){
 
       {
         task: 'Bake Cookies',
-        id: 1528817084358,
+        id: '1528817084358',
         completed: false
       }
     ]
   }
+}
+
+handleChanges = event => {
+  console.log(event.target.name);
+  this.setState({
+    Todo: {
+      ...this.state.Todo,
+      [event.target.name]: event.target.value
+    }
+  })
+}
+
+addItem = event => {
+  event.preventDefault();
+  this.setState({
+    todosOnState: [...this.state.todosOnState, this.state.Todo],
+    todos: {}
+  })
 }
 
   render() {
