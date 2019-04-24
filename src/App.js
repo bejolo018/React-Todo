@@ -1,6 +1,9 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import Todo from './components/TodoComponents/Todo';
+import TodoForm from './components/TodoComponents/TodoForm';
+
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -32,9 +35,10 @@ constructor (){
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todos = {this.state.todos} />
+        <TodoForm />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

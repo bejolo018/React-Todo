@@ -1,9 +1,13 @@
 import React from 'react';
 
-const TodoForm = () => {
+const TodoForm = props => {
     return (
-        <div>
-
-        </div>
+        <form>
+            
+            <button> Add Todo</button>
+            <button> Clear Completed</button>
+        </form>
     )
 }
+
+export default TodoForm
