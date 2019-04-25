@@ -1,11 +1,20 @@
 import React from 'react';
 
-const Todo = props => {
-    return(
-        <div>
-            {props.todo.task}
-        </div>
-    )
+export default function Item(props) {
+    let classNames='item';
+    if(props.item.purchased){
+        classNames += 'purchased';
+    }
+
+
+function updatePurchaseHere (){
+    props.toggleComplete(props.item.id)
 }
 
-export default Todo
+return (
+    <div className={classNames} onClick={updatePurchaseHere}>
+    <p>{props.item.name}</p>
+    </div>
+);
+}
+

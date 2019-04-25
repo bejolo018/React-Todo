@@ -1,6 +1,5 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
-import Todo from './components/TodoComponents/Todo';
 import TodoForm from './components/TodoComponents/TodoForm';
 
 
@@ -14,20 +13,7 @@ constructor (){
   super();
   this.state = {
     todosOnState: Todo,
-    todos : [
-      {
-        task: 'Organize Garage',
-        id: '1528817',
-        completed: false,
-
-    },
-
-      {
-        task: 'Bake Cookies',
-        id: '1528817084358',
-        completed: false
-      }
-    ]
+    input: ''
   }
 }
 
