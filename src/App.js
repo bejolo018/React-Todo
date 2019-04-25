@@ -1,7 +1,20 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import Item from './components/TodoComponents/Todo';
 
+const TodoArray = [
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
 
 
 class App extends React.Component {
@@ -12,38 +25,48 @@ class App extends React.Component {
 constructor (){
   super();
   this.state = {
-    todosOnState: Todo,
-    input: ''
+    TodoArray
   }
 }
 
-handleChanges = event => {
-  console.log(event.target.name);
+addTodo = Todo =>{
   this.setState({
-    Todo: {
-      ...this.state.Todo,
-      [event.target.name]: event.target.value
-    }
-  })
-}
+    groceries: [
+      ...this.state.groceries,
+      {name: Item, purchased: false, id: Date.now()}
+    ]
+  });
+};
 
-addItem = event => {
-  event.preventDefault();
+toggleComplete = id => {
   this.setState({
-    todosOnState: [...this.state.todosOnState, this.state.Todo],
-    todos: {}
-  })
-}
+    TodoArray: this.state.TodoArray.map(Todo => 
+        Todo.id === id ? {...Todo, purchased: !Todo.purchased} : item 
+      )
+  });
+};
 
-  render() {
-    return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoList todos = {this.state.todos} />
-        <TodoForm />
-      </div>
-    )
-  }
+removePurchased = () => {
+  this.setState({
+    TodoArray: this.state.TodoArray.filter(item => !item.purchased)
+  });
+};
+
+render() {
+  return (
+  <div className='App'>
+    <div className='header'>
+    <h1>Shopping List</h1>
+    <AddItemForm addItem={this.addItem} />
+    </div>
+    <TodoList
+    TodoArray={this.state.TodoArray}
+    toggleComplete={this.toggleComplete}
+    />
+    <button onClick={this.removePurchased}>Clear Purchase</button>
+  </div>
+  );
+}
 }
 
 export default App
